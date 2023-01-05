@@ -15,7 +15,7 @@ function multiply(num1, num2) {
   return num1 * num2;
 }
 function divide(num1, num2) {
-  return num1 / num2;
+  return (num1 / num2).toFixed(2);
 }
 function operate(num1, num2, operator) {
   if (operator == "+") return add(num1, num2);
@@ -54,6 +54,7 @@ function buttonPressed(e) {
       flag = 1;
       number2=undefined;
     } else if (a == "+" || a == "-" || a == "*" || a == "/") {
+      console.log(number1)
       flag = 1;
       ope = a;
       screen.textContent += ope;
@@ -82,6 +83,7 @@ function buttonPressed(e) {
       number2 = undefined;
       ope = undefined;
       screen.textContent = null;
+      flag=0;
     } else {
       if (number2 != undefined) {
         number2 = ~~(number2 / 10);
@@ -92,6 +94,7 @@ function buttonPressed(e) {
         }
       } else if (ope != undefined) {
         ope = undefined;
+        flag=0;
         screen.textContent = number1;
       } else if (number1 != undefined) {
         number1 = ~~(number1 / 10);
