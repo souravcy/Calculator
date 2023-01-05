@@ -39,26 +39,31 @@ function buttonPressed(e) {
         screen.textContent += a;
         if (number2 == undefined) {
           number2 = a;
+          console.log(number2)
         } else {
           number2 = number2 + a;
         }
       }
-    }
-    else if( (a=="+" || a=="-") && number1==undefined){
-        screen.textContent += a;
-        number1 = a;
+    } else if ((a == "+" || a == "-") && number1 == undefined) {
+      screen.textContent += a;
+      number1 = a;
+    } else if ((a == "+" || a == "-" || a == "*" || a == "/") && number2 != undefined) {
+      number1 = operate(number1, number2, ope);
+      ope = a;
+      screen.textContent = number1 + ope;
+      flag = 1;
+      number2=undefined;
     } else if (a == "+" || a == "-" || a == "*" || a == "/") {
       flag = 1;
       ope = a;
       screen.textContent += ope;
-    }
-     else if (a == "=") {
+    } else if (a == "=") {
       if (number1 == undefined) {
         ope = undefined;
         number2 = undefined;
         screen.textContent = null;
       } else if (number1 != undefined && number2 == undefined) {
-        screen.textContent=number1;
+        screen.textContent = number1;
       } else if (number2 != undefined) {
         number1 = operate(number1, number2, ope);
         screen.textContent = number1;
